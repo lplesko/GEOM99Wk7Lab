@@ -41,8 +41,9 @@
       }
       
       // Canada layer added with reference to Luna ArcGIS Server URL directly
+      // One-month token generated from https://luna.flemingcollege.ca/arcgis/tokens/generateToken
       var Canada = new FeatureLayer({
-        url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99on/LPleskoCanadaPro/MapServer/0",
+        url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99on/LPleskoCanadaPro/MapServer/0?token=njXZiW_OhTlhoZoEsqX1dq0ZrdXo20gL21rygkFJPFFk4KG7LQLCpQGMBlaZc7zwjnpH3obkMIb9iWUomRt7ZLHJKoyc2FDxKzmQeaaao582IKSpLgQg4vXiokagbLw1",
         outFields: ["PRENAME", "PRFNAME", "PREABBR", "PRFABBR"],
         popupTemplate: popupCanada
       });
