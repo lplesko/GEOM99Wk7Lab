@@ -34,22 +34,16 @@
         zoom: 13
       });
       
-      function addLayer(layerItemPromise, index) {
-        return layerItemPromise.then(function(layer){
-          map.add(layer, index);
-        });
-      }
-      
             
-      // Trailheads
-      var CanadaPortalItem = Layer.fromPortalItem({
-        portalItem: {
-          id: "20b2bc5890874b0488dcdddf6bad865d"
-        }
+      // Canada layer
+      var Canada = new FeatureLayer({
+        url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99on/LPleskoCanadaPro/MapServer/0",
+        outFields: ["TRL_NAME","CITY_JUR","X_STREET","PARKING","ELEV_FT"],
+        popupTemplate: popupTrailheads
       });
 
-
-      addLayer(trailheadsPortalItem, 0);
+      // Add the layer
+      map.add(Canada, 0);
 
     });
   </script>
