@@ -34,11 +34,18 @@
         zoom: 3
       });
       
-            
+      // Define a popup for Canada
+      var popupCanada = {
+        "title": "Canada",
+        "content": "<b>Province (ENG):</b> {PRENAME}<b>Province (FR):</b> {PRFNAME}<b>Abbreviation (ENG):</b> {PREABBR}<b>Abbreviation (FR):</b> {PRFABBR}"
+      }
+      
       // Canada layer added with reference to Luna ArcGIS Server URL directly
       // One-month token generated from https://luna.flemingcollege.ca/arcgis/tokens/generateToken
       var Canada = new FeatureLayer({
-        url: "https://luna.flemingcollege.ca/njXZiW_OhTlhoZoEsqX1dlGTDmf4Um0HwqYg19HTU0u8LgzxUjCFqvcdvEpFSXK4c2-9bR66f0U0eF4AQb7iVbcXZ6uK5050t82tCw3ExbVt4BhNYhlsGyNepOf0OfWxBlLaAFnZgZZh1SVXLOn6fMpbruyhx7V3ReKKpFlreu8/arcgis/rest/services/Geom99on/LPleskoCanadaPro/MapServer/0"
+        url: "https://luna.flemingcollege.ca/njXZiW_OhTlhoZoEsqX1dlGTDmf4Um0HwqYg19HTU0u8LgzxUjCFqvcdvEpFSXK4c2-9bR66f0U0eF4AQb7iVbcXZ6uK5050t82tCw3ExbVt4BhNYhlsGyNepOf0OfWxBlLaAFnZgZZh1SVXLOn6fMpbruyhx7V3ReKKpFlreu8/arcgis/rest/services/Geom99on/LPleskoCanadaPro/MapServer/0",
+        outFields: ["PRENAME", "PRFNAME", "PREABBR", "PRFABBR"],
+        popupTemplate: popupCanada
       });
 
       // Add the layer
