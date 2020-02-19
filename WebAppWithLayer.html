@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Canada: An Overview of Provinces and Territories</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  
+  <link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.13/"></script>
+  
+  <script>  
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/layers/Layer"
+    ], function(Map, MapView, Layer) {
+
+      var map = new Map({
+        basemap: "gray-vector"
+      });
+      
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-97.360035, 59.881993],
+        zoom: 3
+      });
+                  
+      function addLayer(layerItemPromise, index) {
+        return layerItemPromise.then(function(layer){
+          map.add(layer, index);
+        });
+      }
+      
+      // Define a popup for Canada
+      var popupCanada = {
+        "title": "Canada",
+        "content": "<b>Province (ENG):</b> {PRENAME}<br><b>Province (FR):</b> {PRFNAME}<br><b>Abbreviation (ENG):</b> {PREABBR}<br><b>Abbreviation (FR):</b> {PRFABBR}"
+      }
+      
+      // Canada layer added
+      var CanadaPortalItem = Layer.fromPortalItem({
+        portalItem: {
+          id: "1982f5298f9c4b7c80f0efdfea8bbeff",
+        outFields: ["PRENAME", "PRFNAME", "PREABBR", "PRFABBR"],
+        popupTemplate: popupCanada
+      });
+
+      // Add the layer
+      map.add(Canada, 0);
+
+    });
+  </script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>
